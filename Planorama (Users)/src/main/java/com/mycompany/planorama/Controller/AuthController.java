@@ -14,9 +14,8 @@ package com.mycompany.planorama.Controller;
 
 // Later stuff:
 // 1. Store events person is attending in their account - store an arraylist of events people are attending
-// 2. Resize components in screen so that they are a bit larger?
-// 3. Add logo/other graphics?
-// 4. Replace successful login page with home page
+// 2. Add logo/other graphics?
+// 3. Replace successful login page with home page
 
 import com.mycompany.planorama.Model.*;
 import com.mycompany.planorama.View.*;

@@ -1,7 +1,7 @@
 /**
  * planorama/View/EventManagementUI.java
  */
-package planorama.View;
+package com.mycompany.planorama.view;
 
 import planorama.Controller.EventController;
 import planorama.Model.Event;

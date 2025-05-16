@@ -26,11 +26,12 @@ public class DBconnector {
             this.con = DriverManager.getConnection(this.url);
             Statement st = this.con.createStatement();
             sqlTable = """
-                       CREATE TABLE IF NOT EXISTS event_info(
-                       title TEXT PRIMARY KEY, 
-                       date TEXT,
-                       description TEXT
-                       )""";
+                CREATE TABLE IF NOT EXISTS event_info(
+                    title TEXT PRIMARY KEY, 
+                    date TEXT,
+                    description TEXT,
+                    username TEXT
+                )""";
             st.execute(sqlTable);
             System.out.println("SQL connection made.");
         } catch(Exception e){

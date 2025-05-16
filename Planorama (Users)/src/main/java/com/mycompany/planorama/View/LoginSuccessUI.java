@@ -1,32 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * LoginSuccessUI.java
+ * Located at: src/main/java/com/mycompany/planorama/View/LoginSuccessUI.java
  */
 package com.mycompany.planorama.View;
 
-/**
- *
- * @author Kalli-Ann
- */
-
 import javax.swing.*;
 import java.awt.*;
+import com.mycompany.planorama.Main;
 
 public class LoginSuccessUI extends JFrame {
-    
-     /*
-     * LoginSuccessUI(String message)
-     * 
-     * Input:
-     * - message: A string to be displayed in the center of the success window.
-     * 
-     * Output:
-     * - Displays a simple pop-up JFrame window with a message (e.g., "Login successful!" or "Successfully registered!")
-     * - Uses a bold font in a centered JLabel.
-     *
-     * Example:
-     * - new LoginSuccessUI("Successfully registered!") → displays a centered success message in a window.
-     */
     
     public LoginSuccessUI(String message) {
         setTitle("Success");
@@ -37,7 +19,18 @@ public class LoginSuccessUI extends JFrame {
         JLabel label = new JLabel(message, SwingConstants.CENTER);
         label.setFont(new Font("Arial", Font.BOLD, 18));
 
-        add(label);
+        JButton continueButton = new JButton("Continue to Event Manager");
+        continueButton.addActionListener(e -> {
+            dispose(); // Close this window
+            Main.launchEventManager();
+        });
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+        panel.add(label, BorderLayout.CENTER);
+        panel.add(continueButton, BorderLayout.SOUTH);
+
+        add(panel);
         setVisible(true);
     }
 }

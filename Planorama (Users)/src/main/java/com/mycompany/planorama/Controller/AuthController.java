@@ -78,6 +78,7 @@ public class AuthController {
                 }
                 
                 if (model.authenticate(username, password)) {
+                    Session.setCurrentUsername(username);
                     view.dispose(); // Close login window
                     new LoginSuccessUI("Login successfull!");
                 } else {
@@ -117,6 +118,7 @@ public class AuthController {
                 }
 
                 if (model.register(username, password)) {
+                    Session.setCurrentUsername(username);
                     view.dispose(); // Close login window
                     new LoginSuccessUI("Successfully registered!");
                 } else {

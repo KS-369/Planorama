@@ -1,17 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/**
+ * Controller.java
+ * Located at: src/main/java/com/mycompany/planorama_EventsManager/Controller/Controller.java
  */
 package com.mycompany.Planorama_EventsManager.Controller;
 
 import com.mycompany.Planorama_EventsManager.Model.DBconnector;
 import com.mycompany.Planorama_EventsManager.Model.Event;
+import com.mycompany.Planorama_EventsManager.Model.Session;
 import com.mycompany.Planorama_EventsManager.View.EventManagementUI;
 import java.util.ArrayList;
-/**
- *
- * @author adupa
- */
+
 public class Controller {
     private DBconnector db;
     private EventManagementUI ui;
@@ -22,7 +20,8 @@ public class Controller {
     }
     
     public void addEvent(String title, String date, String description) {
-        boolean successful = db.addEventNotDuplicate(title,date,description);
+        String username = Session.getCurrentUsername();
+        boolean successful = db.addEventNotDuplicate(title, date, description, username);
         
         if (successful) {
             System.out.println("Event added!");
@@ -33,7 +32,12 @@ public class Controller {
     }
     
     public void loadEvents() {
-        db.fillEventsFromDB();
+        String username = Session.getCurrentUsername();
+        loadEvents(username);
+    }
+    
+    public void loadEvents(String username) {
+        db.fillEventsFromDB(username);
         ui.refreshEventList();
     }
     
@@ -42,11 +46,14 @@ public class Controller {
     }
     
     public void deleteEvent(String title) {
-        db.deleteEventByTitle(title);
+        String username = Session.getCurrentUsername();
+        db.deleteEventByTitle(title, username);
+        ui.refreshEventList();
     }
     
     public void updateEvent(String oldTitle, String newTitle, String date, String desc) {
-        db.updateEventInDB(oldTitle, newTitle, date, desc);
+        String username = Session.getCurrentUsername();
+        db.updateEventInDB(oldTitle, newTitle, date, desc, username);
         ui.refreshEventList();
     }
 }

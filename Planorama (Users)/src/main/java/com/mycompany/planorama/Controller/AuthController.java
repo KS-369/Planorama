@@ -78,6 +78,7 @@ public class AuthController {
                 }
                 
                 if (model.authenticate(username, password)) {
+                    String username = usernameField.getText();
                     Session.setCurrentUsername(username);
                     view.dispose(); // Close login window
                     new LoginSuccessUI("Login successfull!");
@@ -118,6 +119,7 @@ public class AuthController {
                 }
 
                 if (model.register(username, password)) {
+                    String username = usernameField.getText();
                     Session.setCurrentUsername(username);
                     view.dispose(); // Close login window
                     new LoginSuccessUI("Successfully registered!");

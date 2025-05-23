@@ -13,11 +13,6 @@ import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 
 
 /**
@@ -76,7 +71,7 @@ public class MyProgram {
     
     public static JLayeredPane layeredPane;
 
-    static void homeScreen(JFrame frame){
+    public static void homeScreen(JFrame frame){
             
     layeredPane = new JLayeredPane();
     layeredPane.setPreferredSize(new Dimension(1200, 700));
@@ -106,6 +101,8 @@ public class MyProgram {
     eventsNearYouBut.setBounds(70, 290, 150, 50);
     eventsNearYouBut.setContentAreaFilled(false);
     
+    eventsNearYouBut.addActionListener(new EventsNearYou(frame));
+    
     ImagePanel createEventPic = new ImagePanel("C:\\Users\\shabm2770\\OneDrive - Waterloo Region District School Board\\Documents\\NetBeansProjects\\Planorama\\src\\main\\java\\createEvent.png", 0, 0, 150, 50);
     createEventPic.setBounds(70,440, 150, 50);
         
@@ -128,8 +125,6 @@ public class MyProgram {
     aboutUsBut.setBounds(70, 580, 150, 50);
     aboutUsBut.setContentAreaFilled(false);
     
-    ImagePanel mainPic = new ImagePanel("C:\\Users\\shabm2770\\OneDrive - Waterloo Region District School Board\\Documents\\NetBeansProjects\\Planorama\\src\\main\\java\\1-a3992788.png", 0, 0, 200, 200);
-    mainPic.setBounds(580,100, 150, 50);
     
         
     layeredPane.add(back, Integer.valueOf(0));
@@ -145,18 +140,20 @@ public class MyProgram {
     layeredPane.add(manageEventsBut, Integer.valueOf(10));
     layeredPane.add(aboutUsPic, Integer.valueOf(11));
     layeredPane.add(aboutUsBut, Integer.valueOf(12));
-    layeredPane.add(mainPic, Integer.valueOf(13));
 
     
     frame.setContentPane(layeredPane); //this method ensures that the layered pane i have created occupies the entire center of the frame (which is f in this case)
     frame.pack(); // sizes the frame to make sure all the contents are at preferred sizes
       
     frame.setVisible(true); //ensures the frame can actually be seen!
-
-    
-        
    
     }
+    
+    public static void refreshFrame(JFrame frame){
+        frame.getContentPane().removeAll();
+        frame.revalidate();
+        frame.repaint();
+    } 
     
     public static void main(String[] args) {
     JFrame frame = new JFrame();
